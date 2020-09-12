@@ -36,9 +36,33 @@ local launcher_commands = {
     handler = function()  awful.screen.focused().mypromptbox.widget:run() end
   },
   {
+    description = "open a browser",
+    pattern = {'b'},
+    handler = function(mode) 
+      awful.spawn(menubar.utils.browser)
+      mode.stop()
+    end
+  },
+  {
+    description = "open a file manager",
+    pattern = {'f'},
+    handler = function(mode) 
+      awful.spawn(menubar.utils.file_mgr) 
+      mode.stop()
+    end
+  },
+  {
     description = "open a terminal",
     pattern = {'t'},
-    handler = function() awful.spawn(menubar.utils.terminal) end
+    handler = function(mode) 
+      awful.spawn(menubar.utils.terminal) 
+      mode.stop()
+    end
+  },
+  {
+    description = "lock screen",
+    pattern = {'l'},
+    handler = function() awful.util.spawn("sync") awful.util.spawn_with_shell("xautolock -locknow") end
   },
   {
     description = "open a browser",
@@ -55,6 +79,7 @@ local launcher_commands = {
     pattern = {'i'},
     handler = function(mode) mode.stop() end
   },
+
 }
 
 return launcher_commands
