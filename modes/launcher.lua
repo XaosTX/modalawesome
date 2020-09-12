@@ -63,11 +63,7 @@ local launcher_commands = {
     description = "lock screen",
     pattern = {'l'},
     handler = function() awful.util.spawn("sync") awful.util.spawn_with_shell("xautolock -locknow") end
-  },
-  {
-    description = "open a browser",
-    pattern = {'b'},
-    handler = function() awful.spawn(browser) end
+    mode.stop()
   },
   {
     description = "show the menubar",
