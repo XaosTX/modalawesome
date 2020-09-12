@@ -41,6 +41,11 @@ local launcher_commands = {
     handler = function() awful.spawn(menubar.utils.terminal) end
   },
   {
+    description = "open a browser",
+    pattern = {'b'},
+    handler = function() awful.spawn(browser) end
+  },
+  {
     description = "show the menubar",
     pattern = {'m'},
     handler = function() menubar.show() end
