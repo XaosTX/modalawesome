@@ -1,4 +1,5 @@
 local awful         = require("awful")
+local beautiful     = require("beautiful")
 local gears         = require("gears")
 local textbox       = require("wibox.widget.textbox")
 local parser        = require("modalawesome.parser")
@@ -20,6 +21,14 @@ local function grabkey(_, _, key)
 end
 
 local function startmode(modename)
+
+  for s in screen do
+    if s.selected_tag then
+      s.top_panel.bg = beautiful.bg_urgent
+      s.top_panel.fg = beautiful.fg_urgent
+    end
+  end
+
   mode_box:set_text(modename)
   sequence_box:set_text('')
   grabber:start()
@@ -27,6 +36,13 @@ end
 
 local function stopmode(modename)
   return function()
+    for s in screen do
+      if s.selected_tag then
+        s.top_panel.bg = beautiful.bg_normal
+        s.top_panel.fg = beautiful.fg_normal
+      end
+    end
+
     mode_box:set_text(modename)
     sequence_box:set_text('')
     grabber:stop()
