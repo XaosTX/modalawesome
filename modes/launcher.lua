@@ -39,7 +39,7 @@ local launcher_commands = {
     description = "open a browser",
     pattern = {'b'},
     handler = function(mode) 
-      awful.spawn(menubar.utils.browser)
+      awful.spawn(apps.browser)
       mode.stop()
     end
   },
@@ -47,7 +47,7 @@ local launcher_commands = {
     description = "open a file manager",
     pattern = {'f'},
     handler = function(mode) 
-      awful.spawn(menubar.utils.file_mgr) 
+      awful.spawn(apps.explorer) 
       mode.stop()
     end
   },
@@ -55,7 +55,7 @@ local launcher_commands = {
     description = "open a terminal",
     pattern = {'t'},
     handler = function(mode) 
-      awful.spawn(menubar.utils.terminal) 
+      awful.spawn(apps.terminal) 
       mode.stop()
     end
   },
@@ -78,7 +78,6 @@ local launcher_commands = {
     pattern = {'i'},
     handler = function(mode) mode.stop() end
   },
-
 }
 
 return launcher_commands
